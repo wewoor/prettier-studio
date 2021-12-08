@@ -1,5 +1,5 @@
 # online-code-formatting
-A simple **online code formatting** tool.
+A simple **online code formatting** tool built with [Molecule](https://github.com/DTStack/molecule).
 
 ## Support Languages
 
