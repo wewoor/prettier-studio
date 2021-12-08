@@ -6,6 +6,7 @@ A simple **online code formatting** tool built with [Molecule](https://github.co
 - JSON
 - Javascript (TODO)
 - SQL (TODO)
+- XML (TODO)
 
 ## Development
 
