@@ -1,14 +1,15 @@
 import molecule from '@dtinsight/molecule';
-import { IEditorTab } from '@dtinsight/molecule/esm/model';
+import { Float, IEditorTab } from '@dtinsight/molecule/esm/model';
 import { IExtension } from '@dtinsight/molecule/esm/model/extension';
 import { editor as MonacoEditor } from '@dtinsight/molecule/esm/monaco';
+import { GotoGithub, LanguageType } from './statusBar';
 
-const leftPane = 1;
-const rightPane = 2;
+const leftGroupPane = 1;
+const rightGroupPane = 2;
 
 const sourceEditor: IEditorTab = {
     id: '1',
-    name: 'Source Code',
+    name: 'Source Code ',
     closable: false,
     data: {
         language: 'json',
@@ -18,39 +19,52 @@ const sourceEditor: IEditorTab = {
 const formattedEditor: IEditorTab =  {
     id: '2',
     closable: false,
-    name: 'Formatted',
+    name: 'Formatted ',
     data: {
         language: 'json',
     },
 }
 
-export const ExtendsMonacoSync: IExtension = {
+export const FormatterExtension: IExtension = {
     id: 'ExtendDataSync',
     name: 'Data Sync',
     activate: async () => {
-        molecule.editor.open(sourceEditor, leftPane);
-        molecule.editor.open(formattedEditor, rightPane);
+        // Hidden the useless Panel
         molecule.layout.toggleMenuBarVisibility();
-        /**
-         * TODO: it can cooperate with Pane to make some error prompts
-         */
-        // molecule.layout.togglePanelVisibility();
+        molecule.layout.togglePanelVisibility();
         molecule.layout.toggleSidebarVisibility();
         molecule.layout.toggleActivityBarVisibility();
 
+        molecule.editor.open(sourceEditor, leftGroupPane);
+        molecule.editor.open(formattedEditor, rightGroupPane);
+    
+        molecule.statusBar.add({
+            id: 'LanguageType',
+            render: () => <LanguageType />
+        }, Float.left);
+
+         molecule.statusBar.add({
+            id: 'gotoGithub',
+            render: () => <GotoGithub />
+        }, Float.right);
+
+        // Set the colorTheme
+        molecule.colorTheme.setTheme('GitHub Plus');
+    
         const editor = await new Promise<MonacoEditor.IStandaloneCodeEditor>(
             (resolve) => {
                 setTimeout(() => {
-                    resolve(molecule.editor.getGroupById(1)?.editorInstance);
+                    resolve(molecule.editor.getGroupById(leftGroupPane)?.editorInstance);
                 });
             }
         );
-        const formattingEditor =
-            await new Promise<MonacoEditor.IStandaloneCodeEditor>((resolve) => {
+        const formattingEditor = await new Promise<MonacoEditor.IStandaloneCodeEditor>(
+            (resolve) => {
                 setTimeout(() => {
-                    resolve(molecule.editor.getGroupById(2)?.editorInstance);
+                    resolve(molecule.editor.getGroupById(rightGroupPane)?.editorInstance);
                 });
-            });
+            }
+        );
 
         editor.onDidChangeModelContent(() => {
             const value = editor.getValue();
