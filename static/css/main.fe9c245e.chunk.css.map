@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/index.css","webpack://src/App.css"],"names":[],"mappings":"AAAA,KACE,QACF,CCFA,qCACI,kBAAmB,CACnB,eACJ","file":"main.fe9c245e.chunk.css","sourcesContent":["body {\n  margin: 0;\n}\n",".mo-editor__group-tabs .mo-tab__item {\n    padding-right: 10px;\n    font-weight: 500;\n}"]}
