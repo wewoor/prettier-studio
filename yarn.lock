@@ -1953,7 +1953,7 @@
   resolved "https://registry.npmjs.org/@types/parse-json/-/parse-json-4.0.0.tgz#2f8bb441434d163b35fb8ffdccd7138927ffb8c0"
   integrity sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1NjiMZ/ssFh4wA==
 
-"@types/prettier@^2.0.0":
+"@types/prettier@^2.0.0", "@types/prettier@^2.4.2":
   version "2.4.2"
   resolved "https://registry.npmjs.org/@types/prettier/-/prettier-2.4.2.tgz#4c62fae93eb479660c3bd93f9d24d561597a8281"
   integrity sha512-ekoj4qOQYp7CvjX8ZDBgN86w3MqQhLE1hczEJbEIjgFEumDy+na/4AJAbLXfgEWFNB2pKadM5rPFtuSGMWK7xA==
@@ -2549,6 +2549,11 @@ argparse@^1.0.7:
   integrity sha512-o5Roy6tNG4SL/FOkCAN6RzjiakZS25RLYFrcMttJqbdd8BWrnA+fGz57iN5Pb06pvBGvl5gQ0B48dJlslXvoTg==
   dependencies:
     sprintf-js "~1.0.2"
+
+argparse@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.npmjs.org/argparse/-/argparse-2.0.1.tgz#246f50f3ca78a3240f6c997e8a9bd1eac49e4b38"
+  integrity sha512-8+9WqebbFzpX9OR+Wa6O29asIogeRMzcGtAINdpMHHyAg10f05aSFVBbcEqGf/PXw1EjAZ+q2/bEBg3DvurK3Q==
 
 aria-query@^4.2.2:
   version "4.2.2"
@@ -9703,6 +9708,11 @@ prepend-http@^1.0.0:
   resolved "https://registry.npmjs.org/prepend-http/-/prepend-http-1.0.4.tgz#d4f4562b0ce3696e41ac52d0e002e57a635dc6dc"
   integrity sha1-1PRWKwzjaW5BrFLQ4ALlemNdxtw=
 
+prettier@^2.5.1:
+  version "2.5.1"
+  resolved "https://registry.npmjs.org/prettier/-/prettier-2.5.1.tgz#fff75fa9d519c54cf0fce328c1017d94546bc56a"
+  integrity sha512-vBZcPRUR5MZJwoyi3ZoyQlc1rXeEck8KgeC9AwwOn+exuxLxq5toTRDTSaVrXHxelDMHy9zlicw8u66yxoSUFg==
+
 pretty-bytes@^5.3.0:
   version "5.6.0"
   resolved "https://registry.npmjs.org/pretty-bytes/-/pretty-bytes-5.6.0.tgz#356256f643804773c82f64723fe78c92c62beaeb"
@@ -11228,6 +11238,13 @@ sprintf-js@~1.0.2:
   resolved "https://registry.npmjs.org/sprintf-js/-/sprintf-js-1.0.3.tgz#04e6926f662895354f3dd015203633b857297e2c"
   integrity sha1-BOaSb2YolTVPPdAVIDYzuFcpfiw=
 
+sql-formatter@^4.0.2:
+  version "4.0.2"
+  resolved "https://registry.npmjs.org/sql-formatter/-/sql-formatter-4.0.2.tgz#2b359e5a4c611498d327b9659da7329d71724607"
+  integrity sha512-R6u9GJRiXZLr/lDo8p56L+OyyN2QFJPCDnsyEOsbdIpsnDKL8gubYFo7lNR7Zx7hfdWT80SfkoVS0CMaF/DE2w==
+  dependencies:
+    argparse "^2.0.1"
+
 ssri@^6.0.1:
   version "6.0.2"
   resolved "https://registry.npmjs.org/ssri/-/ssri-6.0.2.tgz#157939134f20464e7301ddba3e90ffa8f7728ac5"
@@ -12699,10 +12716,22 @@ ws@^7.4.6:
   resolved "https://registry.npmjs.org/ws/-/ws-7.5.6.tgz#e59fc509fb15ddfb65487ee9765c5a51dec5fe7b"
   integrity sha512-6GLgCqo2cy2A2rjCNFlxQS6ZljG/coZfZXclldI8FB/1G3CCI36Zd8xy2HrFVACi8tfk5XrgLQEk+P0Tnz9UcA==
 
+xml-formatter@^2.6.0:
+  version "2.6.0"
+  resolved "https://registry.npmjs.org/xml-formatter/-/xml-formatter-2.6.0.tgz#502cf34889584baae0d9580632dc0cbc73de5b49"
+  integrity sha512-+bQeoiE5W3CJdDCHTlveYSWFfQWnYB3uHGeRJ6LlEsL5kT++mWy9iN1cMeEDfBbgOnXO2DNUbmQ6elkR/mCcjg==
+  dependencies:
+    xml-parser-xo "^3.2.0"
+
 xml-name-validator@^3.0.0:
   version "3.0.0"
   resolved "https://registry.npmjs.org/xml-name-validator/-/xml-name-validator-3.0.0.tgz#6ae73e06de4d8c6e47f9fb181f78d648ad457c6a"
   integrity sha512-A5CUptxDsvxKJEU3yO6DuWBSJz/qizqzJKOMIfUJHETbBw/sFaDxgd6fxm1ewUaM0jZ444Fc5vC5ROYurg/4Pw==
+
+xml-parser-xo@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.npmjs.org/xml-parser-xo/-/xml-parser-xo-3.2.0.tgz#c633ab55cf1976d6b03ab4a6a85045093ac32b73"
+  integrity sha512-8LRU6cq+d7mVsoDaMhnkkt3CTtAs4153p49fRo+HIB3I1FD1o5CeXRjRH29sQevIfVJIcPjKSsPU/+Ujhq09Rg==
 
 xmlchars@^2.2.0:
   version "2.2.0"
