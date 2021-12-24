@@ -1,28 +1,39 @@
 import molecule from '@dtinsight/molecule';
-import { Float, IEditorTab } from '@dtinsight/molecule/esm/model';
-import { IExtension } from '@dtinsight/molecule/esm/model/extension';
-import { editor as MonacoEditor } from '@dtinsight/molecule/esm/monaco';
-import { GotoGithub, LanguageType } from './statusBar';
+import { IExtension, Float } from '@dtinsight/molecule/esm/model';
+import { GotoGithub, GotoMolecule, LanguageType } from './statusBar';
+import { SwitchLanguageAction } from './switchLanguage';
 
-const leftGroupPane = 1;
-const rightGroupPane = 2;
+import { 
+    getGroupEditors, sourceEditor,
+    formattedEditor, leftGroupPane, rightGroupPane 
+} from './common';
 
-const sourceEditor: IEditorTab = {
-    id: '1',
-    name: 'Source Code ',
-    closable: false,
-    data: {
-        language: 'json',
-    },
-};
+import { prettify } from './prettier';
 
-const formattedEditor: IEditorTab =  {
-    id: '2',
-    closable: false,
-    name: 'Formatted ',
-    data: {
-        language: 'json',
-    },
+async function handleEvents() {
+    const [ editor, formattingEditor ] = await getGroupEditors();
+
+    editor.onDidChangeModelContent(() => {
+        const value = editor.getValue();
+        const language = editor.getModel()?.getLanguageId()
+        let formatting = '';
+        try {
+            formatting = prettify(language, value);
+        } catch (e) {
+            formatting = value;
+        }
+        if (formatting && formattingEditor) {
+            formattingEditor.setValue(formatting);
+        }
+    }) as any;
+
+    formattingEditor.updateOptions({ readOnly: true });
+
+    molecule.statusBar.onClick((e, { id }) => {
+        if (id === 'LanguageType') {
+            molecule.extension.executeCommand(SwitchLanguageAction.ID);
+        }
+    });
 }
 
 export const FormatterExtension: IExtension = {
@@ -43,40 +54,22 @@ export const FormatterExtension: IExtension = {
             render: () => <LanguageType />
         }, Float.left);
 
-         molecule.statusBar.add({
+        molecule.statusBar.add({
             id: 'gotoGithub',
             render: () => <GotoGithub />
         }, Float.right);
 
+        molecule.statusBar.add({
+            id: 'gotoMolecule',
+            render: () => <GotoMolecule />
+        }, Float.right);
+
         // Set the colorTheme
         molecule.colorTheme.setTheme('GitHub Plus');
+        // Register the actions
+        molecule.extension.registerAction(SwitchLanguageAction);
     
-        const editor = await new Promise<MonacoEditor.IStandaloneCodeEditor>(
-            (resolve) => {
-                setTimeout(() => {
-                    resolve(molecule.editor.getGroupById(leftGroupPane)?.editorInstance);
-                });
-            }
-        );
-        const formattingEditor = await new Promise<MonacoEditor.IStandaloneCodeEditor>(
-            (resolve) => {
-                setTimeout(() => {
-                    resolve(molecule.editor.getGroupById(rightGroupPane)?.editorInstance);
-                });
-            }
-        );
-
-        editor.onDidChangeModelContent(() => {
-            const value = editor.getValue();
-            let formatting = '';
-
-            try {
-                formatting = JSON.stringify(JSON.parse(value), null, 2);
-            } catch (e) {
-                formatting = value;
-            }
-            formattingEditor.setValue(formatting);
-        }) as any;
+        handleEvents();
     },
     dispose() {},
 };
