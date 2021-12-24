@@ -5,7 +5,7 @@ module.exports = function override(config, env) {
     //do stuff with the webpack config...
     config.plugins = [
         ...config.plugins,
-        new MonacoWebpackPlugin([ 'javascript', 'typescript', 'json' ])
+        new MonacoWebpackPlugin([ 'json', 'sql', 'xml', 'markdown' ])
     ]
 
     return config;
