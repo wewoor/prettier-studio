@@ -1,6 +1,6 @@
 # Online Code Formatting
 
-一个优雅的在线代码格式化工具，支持常见的 **`JSON、SQL、XML、Markdown`** 等语言。
+一个优雅的在线代码格式化工具基于 [Molecule](https://github.com/DTStack/molecule)，支持常见的 **`JSON、SQL、XML、Markdown`** 等语言。
 
 ![screenshot](./screenshot.png)
 ## 切换语言
