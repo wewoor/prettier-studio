@@ -1,5 +1,5 @@
+import molecule from '@dtinsight/molecule';
 import {
-    Action2,
     KeybindingWeight,
 } from '@dtinsight/molecule/esm/monaco/common';
 import { KeyCode, KeyMod } from '@dtinsight/molecule/esm/monaco';
@@ -13,7 +13,7 @@ import { KeyChord } from 'monaco-editor/esm/vs/base/common/keyCodes';
 import { 
     updateLanguage, BuiltInLanguages,
 } from './common';
-import molecule from '@dtinsight/molecule';
+import { Action2 } from '@dtinsight/molecule/esm/monaco/action';
 
 export class SwitchLanguageAction extends Action2 {
     static readonly ID = 'SwitchLanguageAction';
