@@ -1,15 +1,15 @@
 import React from 'react';
-import { MoleculeProvider, Workbench } from '@dtinsight/molecule';
-import '@dtinsight/molecule/esm/style/mo.css';
-
-import './App.css';
+import { MoleculeProvider } from '@dtinsight/molecule';
 
 import { customExtensions } from './extensions';
+import MyWorkbench from './myWorkbench/index';
+import '@dtinsight/molecule/esm/style/mo.css';
+import './App.css';
 
 function App() {
   return (
     <MoleculeProvider extensions={customExtensions}>
-        <Workbench />
+        <MyWorkbench />
     </MoleculeProvider>
   );
 }
