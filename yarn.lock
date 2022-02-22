@@ -1241,10 +1241,10 @@
     lodash "^4.17.21"
     standard-version "^9.3.1"
 
-"@dtinsight/molecule@0.9.0-beta.3.1":
-  version "0.9.0-beta.3.1"
-  resolved "https://registry.npmjs.org/@dtinsight/molecule/-/molecule-0.9.0-beta.3.1.tgz#6996c20093bb285c3f96c993dcd071258c2c26ff"
-  integrity sha512-6PHxNifXvC/3M2K4+Cg6nF9BHlR9CzfbXxHY9fxgLlUe16zBp2TdzojBEITmsCYymJrpEEiZ/4UaStgMnjUJWA==
+"@dtinsight/molecule@^0.9.0-beta.3.2":
+  version "0.9.0-beta.3.2"
+  resolved "https://registry.npmjs.org/@dtinsight/molecule/-/molecule-0.9.0-beta.3.2.tgz#9b13ea6995a9c04a8036399904bb83c213dc1934"
+  integrity sha512-Mk1tQaCLo/UFkUmVkcXe1P3yfMlqUltBB5ep8QJOV2rt1PBcAXan2/aavA0bdfrihNmqaYXz/KlPWi+tjKkkyA==
   dependencies:
     "@dtinsight/dt-utils" "^1.0.3"
     "@types/react" "^17.0.3"
